@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bhakta Fest 2025</title>
+
+    <link
+      rel="stylesheet"
+      href="https://iik.ac.id/assets/bootstrap/css/bootstrap.css"
+    />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PHLZQ8J");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+      /* =========================================================================
+         0) GLOBAL RESETS & DEFAULTS
+      ========================================================================= */
+
+      :root {
+        --hero-pink-1: #ff6aa8; /* light pink */
+        --hero-pink-2: #b14bd0; /* magenta-violet */
+        --hero-height-mobile: 680px;
+        --hero-height-desktop: 760px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      html::-webkit-scrollbar {
+        display: none;
+      }
+
+      * {
+        font-family: lato-regular, sans-serif;
+      }
+
+      /* =========================================================================
+         1) FONTS
+      ========================================================================= */
+      @font-face {
+        font-family: lato-regular;
+        src: url(public/fonts/lato/Lato-Regular.ttf);
+      }
+      @font-face {
+        font-family: lato-bold;
+        src: url(public/fonts/lato/Lato-Bold.ttf);
+      }
+      @font-face {
+        font-family: lato-black;
+        src: url(public/fonts/lato/Lato-Black.ttf);
+      }
+      @font-face {
+        font-family: kgrh;
+        src: url(public/fonts/kgrh/KGRedHands.ttf);
+      }
+
+      .lato-regular {
+        font-family: lato-regular, sans-serif;
+      }
+      .lato-bold {
+        font-family: lato-bold, sans-serif;
+      }
+      .lato-black {
+        font-family: lato-black, sans-serif;
+      }
+      .kgrh {
+        font-family: kgrh, sans-serif;
+      }
+      .kgrh-pp {
+        color: #393776;
+      }
+
+      /* =========================================================================
+         2) UTILITIES
+      ========================================================================= */
+      .responsive-img {
+        max-width: 100%;
+        height: auto;
+      }
+      .btn-pink {
+        background-color: #fa48e8;
+        color: white;
+        border-radius: 0.5rem;
+      }
+      .cpr {
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .wacp {
+        font-size: clamp(10px, 2vw, 16px);
+      }
+      a:has(img):hover > img {
+        scale: 1.1;
+        filter: drop-shadow(0 10px 8px rgb(255 255 255 / 0.04))
+          drop-shadow(0 4px 3px rgb(255 255 255 / 0.1));
+        transition: all 200ms ease-in-out;
+      }
+      a.bshadow:has(img):hover > img {
+        scale: 1.1;
+        filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+          drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+        transition: all 200ms ease-in-out;
+      }
+
+      /* =========================================================================
+         3) SECTION BACKGROUNDS
+      ========================================================================= */
+      #head-sec {
+        position: relative;
+        isolation: isolate; /* keeps overlay contained */
+        min-height: var(--hero-height-mobile);
+        /* gradient + bg image */
+        background-image: radial-gradient(
+            1200px 600px at 75% 25%,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0) 60%
+          ),
+          linear-gradient(
+            160deg,
+            var(--hero-pink-1) 0%,
+            var(--hero-pink-2) 100%
+          ),
+          url("public/image/hero_bg.png");
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-position: center, center, center;
+        background-size: cover, cover, cover;
+        /* “overlay” gives a pink tint while keeping image detail */
+        background-blend-mode: normal, overlay, normal;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .hero-layer {
+        position: absolute;
+        inset: auto;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-wrap {
+        position: relative;
+        height: 100%;
+      }
+
+      /* top info (left) */
+      .hero-info {
+        top: 28px;
+        left: clamp(12px, 4vw, 32px);
+        width: clamp(220px, 32vw, 420px);
+        z-index: 3;
+      }
+
+      /* top sponsor row (right) */
+      .hero-sponsor {
+        top: 24px;
+        right: clamp(12px, 4vw, 32px);
+        width: clamp(180px, 28vw, 360px);
+        z-index: 3;
+      }
+
+      /* pink halftone ornament (top-right) */
+      .hero-ornament {
+        top: 0;
+        right: 0;
+        width: clamp(180px, 35vw, 520px);
+        z-index: 1;
+      }
+
+      /* main people/singer (bottom-left center) */
+      .hero-people {
+        left: clamp(-20px, 4vw, 20px);
+        bottom: 110px;
+        width: clamp(260px, 40vw, 540px);
+        z-index: 2;
+      }
+
+      /* headline CTA (center-right) */
+      .hero-cta {
+        right: clamp(10px, 6vw, 64px);
+        top: clamp(220px, 26vh, 320px);
+        width: clamp(260px, 40vw, 540px);
+        z-index: 3;
+      }
+
+      /* total prize tag (bottom-right) */
+      .hero-total-prize {
+        right: clamp(8px, 5vw, 56px);
+        bottom: 120px;
+        width: clamp(210px, 28vw, 360px);
+        z-index: 3;
+      }
+
+      /* camera (bottom-right, slightly above prize) */
+      .hero-camera {
+        right: clamp(-20px, 3vw, 10px);
+        bottom: 160px;
+        width: clamp(180px, 24vw, 320px);
+        z-index: 2;
+      }
+
+      /* wavy footer (sits on bottom) */
+      .hero-footer {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 1600px;
+        max-width: 110%;
+        z-index: 4;
+      }
+
+      #scd-sec {
+        /* reserved for future background if needed */
+        /* background: url(public/bg-2-desktop.jpg) no-repeat bottom/cover; */
+      }
+
+      #sponsor-sec {
+        background: url("public/image/sponsor_bg.png") no-repeat bottom/cover;
+      }
+
+      #doorprize-sec {
+        background: url("public/image/doorprize_bg.png") no-repeat bottom/cover;
+      }
+
+      #register-sec {
+        background: url("public/image/background bhaktafest 4.jpg") no-repeat
+          bottom/cover;
+      }
+
+      footer {
+        background: url("public/image/background bhaktafest 6.jpg") no-repeat;
+        background-position: top 80% left 55%;
+        background-size: 200%;
+      }
+
+      #foot-sec {
+        background: url("public/image/mobile/background bhaktafest 6.jpg")
+          no-repeat;
+        background-position: top 70% left 50%;
+        background-size: 150%;
+      }
+
+      /* =========================================================================
+         4) HERO / HEADER ELEMENTS
+      ========================================================================= */
+      .img-brand,
+      .img-logo {
+        width: 55%;
+        height: 55%;
+      }
+      .logo-bazaar {
+        width: 75%;
+      }
+
+      #tsimg {
+        position: absolute;
+        left: 0;
+        top: 90%;
+      }
+      #tsimg > div {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        justify-content: center;
+      }
+      #tsimg img {
+        flex: 0 0 auto;
+        max-width: 75%;
+      }
+
+      /* =========================================================================
+         5) COUNTDOWN
+      ========================================================================= */
+      .count-wrapper {
+        padding: 0 0.65rem;
+        background: white;
+        border-radius: 0.35rem;
+        filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+          drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+        font-weight: bold;
+        font-size: 1.25em;
+      }
+      .col.h3,
+      .count-wrapper > p {
+        background: #fa48e8;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0;
+      }
+      .count-wrapper + p {
+        opacity: 0.7;
+        margin-bottom: 0;
+      }
+      .row.countdown > .col.h3 {
+        width: max-content;
+        padding: 0;
+        margin-top: 1rem;
+      }
+
+      /* =========================================================================
+         6) CARDS / TABLES
+      ========================================================================= */
+      .comp-card {
+        border-radius: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+      .cbody table {
+        border-collapse: separate;
+        border-spacing: 0 0.5em;
+      }
+      .cbody table th {
+        text-align: center;
+        background-color: #5f4ed8;
+        border-radius: 0.25rem;
+      }
+      .cbody table td {
+        text-align: left;
+      }
+      .cbody table * {
+        vertical-align: text-top;
+      }
+      .cbody {
+        padding: 1.2rem;
+      }
+
+      /* =========================================================================
+         7) DOORPRIZE IMAGES
+      ========================================================================= */
+      .img-doorprize-mobile {
+        display: block;
+      }
+      .img-doorprize-desktop {
+        display: none;
+      }
+      .img-doorprize {
+        width: 100%;
+        height: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        object-fit: cover;
+      }
+      .img-lewatkan {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      /* =========================================================================
+         8) REGISTER CARDS
+      ========================================================================= */
+      .card-small {
+        min-height: 10rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      .img-register {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+        overflow: visible;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+      .register-info-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-align: left;
+      }
+      .register-info-bar {
+        font-size: 1rem;
+        border-radius: 1rem;
+        background-color: #1cb1e4;
+        color: #000;
+        text-align: center;
+        padding: 0.5rem;
+      }
+      .card-register {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 30rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        border-color: #fff;
+        border-width: 1px;
+      }
+      .card-register .register-card {
+        background-color: #0c5dcf;
+        padding: 2rem;
+        border-radius: 1rem;
+        color: white;
+        max-width: 90%;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #fff;
+      }
+      .card-register .title {
+        font-family: "KGRH", sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+      .card-register .sub-title {
+        font-family: "Lato", sans-serif;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #fff;
+        text-align: left;
+      }
+      .card-register .details {
+        font-family: "Lato", sans-serif;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      .card-register .details p {
+        margin: 0.5rem 0;
+      }
+      .card-register .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .card-register .btn-info {
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        display: flex;
+        background-color: transparent;
+        width: 100%;
+        min-height: 5rem;
+        text-align: center;
+        border: 1px solid #fff;
+        align-items: center;
+        justify-content: center;
+      }
+      .card-register .btn-daftar {
+        width: 100%;
+      }
+      .card-register .btn-daftar:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      /* =========================================================================
+         9) YOUTUBE SECTION
+      ========================================================================= */
+      #youtube-section {
+        margin-top: 15rem;
+        background: url("public/image/background bhaktafest 2.jpg") no-repeat
+          bottom/cover;
+        position: relative;
+        padding-top: 0;
+      }
+      #youtube-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.8;
+        background: repeating-linear-gradient(
+          -45deg,
+          #ffffff,
+          #ffffff 2px,
+          #ababab 5px,
+          #ababab 25px
+        );
+        z-index: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 15%);
+      }
+      .container-bulan-juni {
+        padding-bottom: 5rem;
+      }
+      .youtube-iframe {
+        margin-top: 3rem;
+        padding-top: 2rem;
+      }
+      iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
+      }
+
+      /* =========================================================================
+         10) TITLES, BADGES, HERO TEXT
+      ========================================================================= */
+      .hero1,
+      .hero2 {
+        text-align: center;
+        padding: 0 1rem;
+      }
+      #sc-wrap {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 1rem auto;
+        width: 80%;
+      }
+      #badge-kemeriahan {
+        top: 12rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      #badge-kemeriahan > img {
+        width: 70%;
+      }
+      #row-daftar {
+        margin-top: 2.5rem;
+      }
+      #img-daftar {
+        bottom: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+      }
+      #img-past-sponsor,
+      #img-sponsor {
+        width: 50%;
+      }
+      .ul-tenant {
+        font-size: 0.8rem;
+      }
+      #img-muter + img {
+        top: 60%;
+        animation: MoveUpDown 1.5s ease-in-out infinite;
+      }
+      #gratiss {
+        display: none;
+        animation: MoveUpDown 1.5s ease-in-out infinite;
+      }
+      #img-muter {
+        height: 300px;
+      }
+
+      /* =========================================================================
+         11) SLIDER / MARQUEE (photobanner)
+      ========================================================================= */
+      .photobanner {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: bannermove 24s linear infinite;
+        height: 80%;
+      }
+      .bannermove-reverse {
+        animation: bannermove-reverse 24s linear infinite;
+      }
+      .photobanner > img {
+        height: 100%;
+      }
+
+      /* =========================================================================
+         12) SMALL HIGHLIGHT BALLOONS & TABLE ALIGNMENTS
+      ========================================================================= */
+      .hl-bg {
+        background: url(public/balon\ chat.svg) no-repeat center/contain;
+        padding: 1rem 0.975rem 1rem 1.25rem;
+        position: absolute;
+        top: -100%;
+        right: -3.5rem;
+        scale: 0.6;
+      }
+      .hl-small {
+        line-height: 50%;
+        margin-left: 4px;
+        font-size: 1rem !important;
+        font-weight: 100;
+      }
+      .cbody table td + th {
+        font-weight: normal;
+        vertical-align: middle;
+        padding-left: 4px;
+      }
+      .hl-bg.brnj,
+      .hl-bg.brwj {
+        top: -12%;
+      }
+
+      /* =========================================================================
+         13) LAYOUT HELPERS (COLUMNS, IMAGES, BADGES)
+      ========================================================================= */
+      .col-kanan {
+        place-self: start;
+      }
+      .col-kanan img {
+        scale: unset;
+      }
+      #gttmic img {
+        position: absolute;
+      }
+      #gttmic img:nth-child(1) {
+        top: -3%;
+        left: 0;
+      }
+      #gttmic img:nth-child(2) {
+        top: 30%;
+        right: 0;
+        width: 50%;
+      }
+      .infowcd {
+        position: relative;
+        z-index: 2;
+      }
+      .minfo-wrapper,
+      .img-bf-footer {
+        width: 70%;
+      }
+      .col-kiri {
+        order: 2;
+      }
+      .col-tengah {
+        order: 1;
+      }
+      .btn-cek-m {
+        background: rgb(231, 47, 158);
+        background: linear-gradient(
+          90deg,
+          rgba(231, 47, 158, 1) 35%,
+          rgba(97, 78, 211, 1) 100%
+        );
+        border: 1.35px solid #231779;
+        font-size: 0.875rem;
+        color: white;
+        border-radius: 0.65rem;
+      }
+      .hand-v {
+        animation: MoveYHand 1.5s ease-in-out infinite;
+      }
+      .hand-h {
+        animation: MoveXHand 1.5s ease-in-out infinite;
+      }
+
+      /* =========================================================================
+         14) TENANT / SPONSOR
+      ========================================================================= */
+      .tenant-title {
+        width: 30%;
+      }
+      .daftar-sponsor-title {
+        width: 70%;
+      }
+      .arrow-icon {
+        right: 25%;
+      }
+      .arrow-icon-lewatkan {
+        top: 70%;
+        width: 15%;
+        right: 2%;
+      }
+
+      /* =========================================================================
+         15) TENANT LIST GRID
+      ========================================================================= */
+      .tenant-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding-left: 30px;
+        justify-items: left;
+        align-items: center;
+        text-align: center;
+        text-wrap: nowrap;
+      }
+      .tenant-list ul {
+        padding: 0;
+        margin: 0;
+      }
+      .tenant-list li {
+        list-style-type: disc;
+        text-align: left;
+      }
+
+      /* =========================================================================
+         16) ANIMATIONS
+      ========================================================================= */
+      @keyframes bannermove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(-50%, 0);
+        }
+      }
+      @keyframes bannermove-reverse {
+        0% {
+          transform: translate(-50%, 0);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+      @keyframes MoveUpDown {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(4rem);
+        }
+      }
+      @keyframes MoveYHand {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-2rem);
+        }
+      }
+      @keyframes MoveXHand {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-2rem);
+        }
+      }
+
+      /* =========================================================================
+         17) MEDIA QUERIES
+      ========================================================================= */
+
+      /* -- ≤768px ------------------------------------------------------------- */
+      @media (max-width: 768px) {
+        .responsive-img {
+          width: 30%;
+        }
+        #text-terbuka-mobile {
+          position: relative;
+          left: 0;
+          top: auto;
+          transform: translateY(0);
+          width: 40%;
+        }
+        .tenant-list {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .card-register {
+          padding: 1rem 0;
+        }
+        .card-register .register-card {
+          padding: 1.5rem;
+        }
+
+        .hero-info {
+          top: 16px;
+          width: clamp(200px, 60vw, 360px);
+        }
+        .hero-sponsor {
+          top: 14px;
+          width: clamp(160px, 40vw, 300px);
+        }
+        .hero-people {
+          bottom: 140px;
+          width: clamp(260px, 80vw, 520px);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .hero-cta {
+          top: auto;
+          bottom: 210px;
+          right: 50%;
+          transform: translateX(50%);
+          width: clamp(260px, 86vw, 560px);
+        }
+        .hero-camera {
+          display: none;
+        } /* optional: hide camera on small screens */
+        .hero-total-prize {
+          right: 50%;
+          transform: translateX(50%);
+          bottom: 90px;
+        }
+        .hero-footer {
+          width: 1400px;
+        }
+      }
+
+      /* -- ≥768px ------------------------------------------------------------- */
+      @media screen and (min-width: 768px) {
+        .minfo-wrapper {
+          width: 50%;
+        }
+      }
+
+      /* -- ≥1024px ------------------------------------------------------------ */
+      @media screen and (min-width: 1024px) {
+        .img-bf-footer {
+          width: 50%;
+        }
+        footer {
+          background-position: top 58% left 55%;
+          background-size: 160%;
+        }
+        .minfo-wrapper {
+          width: 35%;
+        }
+        #badge-kemeriahan {
+          top: -2rem;
+          left: 80%;
+          transform: translateX(-50%);
+          z-index: 2;
+        }
+
+        #head-sec {
+          min-height: var(--hero-height-desktop);
+        }
+        .hero-people {
+          bottom: 110px;
+        }
+        .hero-cta {
+          top: clamp(240px, 22vh, 300px);
+        }
+
+        #head-sec > .container {
+          padding: 4rem 0;
+        }
+        #foot-sec {
+          background-position: center;
+          background-size: cover;
+        }
+        .infowcd {
+          font-size: 0.875rem;
+        }
+        .img-brand {
+          width: 40%;
+        }
+        .logo-bazaar {
+          width: 25%;
+        }
+        .doorprize-row {
+          transform: translateX(5%);
+        }
+        .img-doorprize-mobile {
+          display: none;
+        }
+        .img-doorprize-desktop {
+          display: block;
+        }
+        .img-doorprize {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        .img-tumbler {
+          width: 20rem;
+          height: auto;
+        }
+        .img-lewatkan {
+          max-width: 50%;
+        }
+        .title-daftar-sponsor {
+          transform: translateX(30%);
+        }
+        .info-detail-sponsor {
+          transform: translateX(-30%);
+        }
+        .tenant-title {
+          width: 15%;
+        }
+        .arrow-icon {
+          right: 30%;
+        }
+        .arrow-icon-lewatkan {
+          top: 70%;
+          width: 20%;
+          right: 0;
+          transform: translateX(50%);
+        }
+        .daftar-sponsor-title {
+          width: 40%;
+        }
+        #youtube-section {
+          margin-top: -5rem;
+        }
+        .container-bulan-juni {
+          padding-top: 5rem;
+          padding-bottom: 5rem;
+        }
+        .youtube-iframe {
+          margin-top: -2rem;
+          max-width: 50%;
+          transform: translateX(50%);
+          padding-bottom: 2rem;
+        }
+        #gratiss {
+          display: block;
+          animation: MoveUpDown 1.5s ease-in-out infinite;
+          max-width: 150px;
+        }
+        .teks-hadir-juni {
+          width: 30%;
+          transform: translateY(-50%);
+        }
+        .img-logo {
+          width: 30%;
+        }
+        .hero1 {
+          text-align: right;
+          border-right: 1px solid black;
+        }
+        .hero2 {
+          text-align: left;
+        }
+        .col.h3 {
+          margin-top: 2.5%;
+        }
+        #sc-wrap {
+          width: 100%;
+          margin: 1rem 0;
+        }
+        .count-wrapper {
+          font-size: 2.25rem;
+        }
+        #badge-kemeriahan img {
+          width: 20%;
+        }
+        #scd-sec > div {
+          top: -2.5rem;
+        }
+        #img-muter {
+          height: 300px;
+        }
+        .photobanner {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          overflow: hidden;
+          white-space: nowrap;
+          animation: bannermove 32s linear infinite;
+          height: 80%;
+        }
+        .photobanner > img {
+          height: 100%;
+          margin-left: -0.25rem;
+        }
+        .comp-card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+        .comp-card > * {
+          width: 50%;
+        }
+        #row-daftar {
+          margin-top: 3rem;
+          padding-bottom: 3rem;
+          display: flex;
+          align-items: center;
+          flex-direction: row-reverse;
+        }
+        #img-daftar {
+          width: 100%;
+        }
+        #img-past-sponsor,
+        #img-sponsor {
+          width: 50%;
+          padding-bottom: 2rem;
+        }
+        .ul-tenant {
+          font-size: 1rem;
+        }
+        #img-muter + img {
+          top: 25%;
+        }
+        .col-lg-6:has(#img-past-sponsor) {
+          border-right: 2px solid #4330ca;
+        }
+        .chead > img {
+          scale: 1.3;
+          display: block;
+          margin-bottom: 1.75rem;
+        }
+        .hl-bg.brnj,
+        .hl-bg.brwj {
+          top: 0;
+        }
+        .col-kanan img {
+          scale: 1.25;
+        }
+        .cpr {
+          text-align: unset;
+          margin-top: unset;
+        }
+        #gttmic img:nth-child(1) {
+          top: -5%;
+          width: 50%;
+        }
+        #gttmic img:nth-child(2) {
+          top: 30%;
+          width: 20%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PHLZQ8J"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ================================ HEAD / HERO ================================ -->
+    <section id="head-sec">
+      <!-- Layered art -->
+      <img
+        src="public/image/hero_ornament.svg"
+        alt=""
+        class="hero-layer hero-ornament"
+      />
+      <img
+        src="public/image/hero_info.svg"
+        alt=""
+        class="hero-layer hero-info"
+      />
+      <img
+        src="public/image/hero_sponsor.svg"
+        alt=""
+        class="hero-layer hero-sponsor"
+      />
+      <img
+        src="public/image/hero_people.svg"
+        alt=""
+        class="hero-layer hero-people"
+      />
+      <img
+        src="public/image/hero_camera.svg"
+        alt=""
+        class="hero-layer hero-camera"
+      />
+      <img
+        src="public/image/hero_total_prize.svg"
+        alt=""
+        class="hero-layer hero-total-prize"
+      />
+      <img
+        src="public/image/hero_footer.svg"
+        alt=""
+        class="hero-layer hero-footer"
+      />
+
+      <!-- (optional) keep your countdown/text for now; sits above layers -->
+      <div class="container py-4">
+        <!-- your countdown / small copy can stay here if you still need it during transition -->
+      </div>
+    </section>
+
+    <!-- ================================ SCROLLER / BANNER ================================ -->
+    <section id="scd-sec">
+      <div class="position-relative" style="overflow-x: clip">
+        <div class="position-relative" id="img-muter">
+          <div class="photobanner">
+            <img src="public/image/image slider animation.png" />
+            <img src="public/image/image slider animation.png" />
+            <img src="public/image/image slider animation.png" />
+          </div>
+
+          <div
+            class="photobanner bannermove-reverse d-block d-md-none"
+            style="top: 80%"
+          >
+            <img src="public/image/image slider animation.png" />
+            <img src="public/image/image slider animation.png" />
+            <img src="public/image/image slider animation.png" />
+          </div>
+        </div>
+
+        <div id="badge-kemeriahan" class="position-absolute w-100">
+          <img
+            loading="lazy"
+            src="public/image/teks kemeriahan.png"
+            class="img-fluid d-block mx-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ YOUTUBE SECTION ================================ -->
+    <section id="youtube-section">
+      <div class="container">
+        <div class="text-center container-bulan-juni">
+          <img
+            src="public/image/teks hadir bulan juli.png"
+            alt="teks bulan juni"
+            class="img-fluid mx-auto teks-hadir-juni"
+          />
+        </div>
+
+        <div>
+          <img
+            id="gratiss"
+            src="public/image/teks gratis .png"
+            class="img-fluid position-absolute"
+            style="left: 5%; top: 5%"
+          />
+        </div>
+
+        <div
+          class="text-center d-flex justify-content-center youtube-iframe pb-5"
+        >
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/1fStOdvoJ7E?si=ri_2MjEEBQsYQOeG&amp;controls=0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ SPONSOR / TENANT ================================ -->
+    <section id="sponsor-sec">
+      <div class="row d-flex justify-content-center align-items-center pt-5">
+        <div class="col-lg-6 text-center px-0 title-daftar-sponsor">
+          <img
+            src="public/image/teks daftar sponsor.png"
+            alt="teks sponsor"
+            class="img-fluid daftar-sponsor-title"
+          />
+        </div>
+
+        <div
+          class="col-lg-6 text-center pt-5 position-relative px-0 info-detail-sponsor"
+        >
+          <p style="font-size: 1.25rem; font-weight: bold">
+            Info Detail Sponsor<br />
+            & Sewa Tenant <br />
+          </p>
+
+          <a
+            href="https://blog.iik.ac.id/eventbhakta/2025/04/21/sponsorship-sewa-stand-bhakta-fest-2025/"
+            target="_blank"
+            class="btn btn-pink"
+            >Klik Disini</a
+          >
+
+          <img
+            src="public/image/icon arrow.png"
+            class="img-fluid position-absolute hand-h arrow-icon"
+            style="top: 10; width: 10%"
+          />
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="text-center mt-5 mb-3">
+          <img
+            src="public/image/title tenant.png"
+            class="img-fluid tenant-title"
+          />
+        </div>
+
+        <div class="tenant-list pb-5">
+          <ul class="list-unstyled d-grid gap-3">
+            <li class="col-3 col-md-6">Roti Darel</li>
+            <li class="col-3 col-md-6">Azarine</li>
+            <li class="col-3 col-md-6">Bakso Pak As</li>
+            <li class="col-3 col-md-6">Kantin Mykail Jus</li>
+            <li class="col-3 col-md-6">PPMB dan IIK Shop</li>
+            <li class="col-3 col-md-6">Korean Food dan Milo</li>
+            <li class="col-3 col-md-6">Kantin Dragon</li>
+            <li class="col-3 col-md-6">Kantin Ijo Mama</li>
+            <li class="col-3 col-md-6">Kantin Elrasya</li>
+            <li class="col-3 col-md-6">Kantin Frescourd</li>
+          </ul>
+
+          <ul class="list-unstyled d-grid gap-3">
+            <li class="col-3 col-md-6">Kuliner Korean Street Food</li>
+            <li class="col-3 col-md-6">Kantin Dapur khanza</li>
+            <li class="col-3 col-md-6">Stand Warmindo / Kantin Eny</li>
+            <li class="col-3 col-md-6">Kantin Boek Yati</li>
+            <li class="col-3 col-md-6">RSGM</li>
+            <li class="col-3 col-md-6">Little Sweet Project</li>
+            <li class="col-3 col-md-6">Es Teh Hayo dan Nasbung</li>
+            <li class="col-3 col-md-6">APOTEK IIK Bhakta</li>
+            <li class="col-3 col-md-6">Orenji</li>
+            <li class="col-3 col-md-6">Beads bymeow</li>
+          </ul>
+
+          <ul class="list-unstyled d-grid gap-3">
+            <li class="col-3 col-md-6">Sano sano</li>
+            <li class="col-3 col-md-6">Pota mine</li>
+            <li class="col-3 col-md-6">Egabi farm</li>
+            <li class="col-3 col-md-6">Japanese souffle pancake (Ntep & Co)</li>
+            <li class="col-3 col-md-6">Es cidhuk</li>
+            <li class="col-3 col-md-6">Dimson</li>
+            <li class="col-3 col-md-6">Minuman Thai Tea</li>
+            <li class="col-3 col-md-6">Stand Bang Her</li>
+            <li class="col-3 col-md-6">Here Mie Go</li>
+            <li class="col-3 col-md-6">Kantin Amanah</li>
+          </ul>
+
+          <ul class="list-unstyled d-grid gap-3">
+            <li class="col-3 col-md-6">Bakso 3 Saudara</li>
+            <li class="col-3 col-md-6">Makwo coffe</li>
+            <li class="col-3 col-md-6">Dapur FARDA</li>
+            <li class="col-3 col-md-6">Arwana pentol</li>
+            <li class="col-3 col-md-6">Tasya 18</li>
+            <li class="col-3 col-md-6">Mirai Cookies</li>
+            <li class="col-3 col-md-6">Pukis keke</li>
+            <li class="col-3 col-md-6">Mixue</li>
+            <li class="col-3 col-md-6">Dunia aci by duriantok</li>
+            <li class="col-3 col-md-6">Mocapcin</li>
+          </ul>
+        </div>
+
+        <div class="text-center mt-5">
+          <img
+            src="public/image/title sponsor.png"
+            class="img-fluid tenant-title"
+          />
+          <ul class="list-unstyled row g-3">
+            <li class="col-6 col-md-3">
+              <img
+                loading="lazy"
+                src="public/image/sponsor_azarine.png"
+                class="img-fluid rounded mx-auto d-block"
+                alt="Azarine Our Sponsor, Bhakta Fest 2025"
+                style="object-fit: contain; width: 150px; height: 200px"
+              />
+            </li>
+            <li class="col-6 col-md-3">
+              <img
+                loading="lazy"
+                src="public/image/sponsor_wardah.png"
+                class="img-fluid rounded mx-auto d-block"
+                alt="Wardah Our Sponsor, Bhakta Fest 2025"
+                style="object-fit: contain; width: 150px; height: 200px"
+              />
+            </li>
+            <li class="col-6 col-md-3">
+              <img
+                loading="lazy"
+                src="public/image/sponsor_hexos.png"
+                class="img-fluid rounded mx-auto d-block"
+                alt="Hexos Our Sponsor, Bhakta Fest 2025"
+                style="object-fit: contain; width: 150px; height: 200px"
+              />
+            </li>
+            <li class="col-6 col-md-3">
+              <img
+                loading="lazy"
+                src="public/image/sponsor_oronaminc.jpg"
+                class="img-fluid rounded mx-auto d-block"
+                alt="Oronamin C Our Sponsor, Bhakta Fest 2025"
+                style="object-fit: contain; width: 150px; height: 200px"
+              />
+            </li>
+            <li class="col-6 col-md-3">
+              <img
+                loading="lazy"
+                src="public/image/sponsor_darel.png"
+                class="img-fluid rounded mx-auto d-block"
+                alt="Darel Our Sponsor, Bhakta Fest 2025"
+                style="object-fit: contain; width: 150px; height: 200px"
+              />
+            </li>
+          </ul>
+        </div>
+
+        <div class="sponsor-list pb-5"></div>
+      </div>
+    </section>
+
+    <!-- ================================ REGISTER CARDS ================================ -->
+    <section id="register-sec">
+      <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+          <!-- card left -->
+          <div class="col-lg-6 card-register">
+            <div class="register-card left position-relative">
+              <img
+                src="public/image/icon bhakta kpop.png"
+                alt="icon bhakta kpop"
+                class="img-fluid img-register"
+              />
+
+              <p class="sub-title pt-3 pb-5">
+                Tunjukkan pesonamu di panggung dengan gaya dan gerakan ala
+                bintang K-Pop favoritmu! <br />
+                Tunjukkan gaya dan energimu di atas panggung!
+              </p>
+
+              <div class="details">
+                <p class="register-info-title">
+                  <strong>Pendaftaran Terakhir</strong>
+                </p>
+                <p class="register-info-bar">Jumat, 4 Juli 2025</p>
+              </div>
+
+              <div class="details">
+                <p class="register-info-title"><strong>Hadiah Total</strong></p>
+                <p class="register-info-bar">Rp. 6.000.000,-</p>
+              </div>
+
+              <div class="details">
+                <p class="register-info-title">
+                  <strong>Terbuka untuk</strong>
+                </p>
+                <p class="register-info-bar">Internal dan Pelajar Umum</p>
+              </div>
+
+              <div class="buttons">
+                <a
+                  href="https://blog.iik.ac.id/eventbhakta/2025/04/15/bhakta-k-pop-star-2025/"
+                  target="_blank"
+                  class="btn-info"
+                  >Info Lengkap</a
+                >
+
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe-lCgZUwTX0COr9nE8y1S7T-qtWivLdhV7yTTJbQjhLQk6Tg/viewform"
+                  target="_blank"
+                >
+                  <img
+                    src="public/image/icon daftar sekarang.png"
+                    alt="button daftar"
+                    class="img-fluid btn-daftar"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- card right -->
+          <div class="col-lg-6 card-register">
+            <div class="register-card right position-relative">
+              <img
+                src="public/image/icon bhakta onstage.png"
+                alt="icon bhakta onstage"
+                class="img-fluid img-register"
+              />
+
+              <p class="sub-title pt-3 pb-5">
+                Penampilan live music dan bakat seni oleh anak muda berbakat.
+                Terbuka bagi civitas Bhakta dan pelajar umum. Ayo tampilkan
+                bakatmu di atas panggung!
+              </p>
+
+              <div class="details">
+                <p class="register-info-title">
+                  <strong>Pendaftaran Terakhir</strong>
+                </p>
+                <p class="register-info-bar">Jumat, 4 Juli 2025</p>
+              </div>
+
+              <div class="details">
+                <p class="register-info-title"><strong>Hadiah Total</strong></p>
+                <p class="register-info-bar">Rp. 3.000.000,-</p>
+              </div>
+
+              <div class="details">
+                <p class="register-info-title">
+                  <strong>Terbuka untuk</strong>
+                </p>
+                <p class="register-info-bar">Internal dan Pelajar Umum</p>
+              </div>
+
+              <div class="buttons">
+                <a
+                  href="https://blog.iik.ac.id/eventbhakta/2025/04/14/bhakta-on-stage-2025/"
+                  target="_blank"
+                  class="btn-info"
+                  >Info Lengkap</a
+                >
+
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdGiskwsuPlIrAXk4i4riQxIaNoqHPMcQd-flKcq0M8wF9tvw/viewform"
+                  target="_blank"
+                >
+                  <img
+                    src="public/image/icon daftar sekarang.png"
+                    alt="button daftar"
+                    class="img-fluid btn-daftar"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="text-center d-flex align-items-center justify-content-center"
+        >
+          <img
+            src="public/image/teks jangan lewatkan.png"
+            alt="teks jangan lewatkan"
+            class="img-fluid img-lewatkan"
+          />
+        </div>
+
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-lg-6 card-register">
+            <div class="register-card left card-small position-relative">
+              <img
+                src="public/image/icon fireworks party.png"
+                alt="icon fireworks party"
+                class="img-fluid"
+              />
+              <img
+                src="public/image/icon arrow.png"
+                class="img-fluid position-absolute hand-h arrow-icon-lewatkan"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-6 card-register">
+            <div class="register-card right card-small position-relative">
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/04/15/dress-code-challenge-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/icon dresscode.png"
+                  alt="icon dresscode"
+                  class="img-fluid"
+                />
+              </a>
+              <img
+                src="public/image/icon arrow.png"
+                class="img-fluid position-absolute hand-h arrow-icon-lewatkan"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ DOORPRIZE ================================ -->
+    <section id="doorprize-sec" class="position-relative">
+      <div class="container">
+        <div
+          class="row d-flex justify-content-center align-items-center doorprize-row"
+        >
+          <div class="col-lg-3">
+            <a
+              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
+              target="_blank"
+            >
+              <img
+                src="public/image/image doorprize 1.png"
+                alt="door prize 1"
+                class="img-fluid img-doorprize img-doorprize-desktop"
+              />
+            </a>
+          </div>
+
+          <div class="col-lg-3">
+            <a
+              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
+              target="_blank"
+            >
+              <img
+                src="public/image/teks hadiah langsung.png"
+                alt="door prize langsung"
+                class="img-fluid img-doorprize"
+              />
+            </a>
+          </div>
+
+          <div class="col-lg-3">
+            <a
+              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
+              target="_blank"
+            >
+              <img
+                src="public/image/teks doorprize.png"
+                alt="teks door prize"
+                class="img-fluid img-doorprize"
+              />
+            </a>
+          </div>
+
+          <div class="col-lg-3">
+            <a
+              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
+              target="_blank"
+            >
+              <img
+                src="public/image/image doorprize 2.png"
+                alt="door prize 2"
+                class="img-fluid img-doorprize img-doorprize-desktop"
+                style="max-width: 10rem"
+              />
+              <img
+                src="public/image/image doorprize mobile.png"
+                alt="door prize 1"
+                class="img-fluid img-doorprize img-doorprize-mobile"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ FOOTER ================================ -->
+    <footer>
+      <div
+        class="container fw-semibold py-4 text-center"
+        style="color: #231779"
+      >
+        <div>
+          <img
+            src="public/image/logo bhakta fest big.png"
+            class="img-fluid img-bf-footer"
+            alt="Bhakta Fest 2025"
+          />
+        </div>
+
+        <div class="my-3 my-lg-5">
+          <div class="mx-auto minfo-wrapper">
+            <p class="h5 fw-semibold text-center">More Information :</p>
+
+            <div class="position-relative">
+              <img
+                src="public/image/pink ban.png"
+                class="img-fluid w-100"
+                alt=""
+              />
+
+              <div
+                class="d-flex w-100 align-items-center p-2 justify-content-center"
+                style="
+                  position: absolute;
+                  top: 45%;
+                  left: 50%;
+                  width: max-content;
+                  transform: translate(-50%, -50%);
+                "
+              >
+                <img
+                  src="public/wa.svg"
+                  class="img-fluid mx-2"
+                  style="width: 1.2rem"
+                />
+
+                <p class="mb-0 wacp" style="color: white">
+                  <a
+                    target="_blank"
+                    class="text-decoration-none text-white"
+                    href="https://wa.me/6285150686421"
+                    >0851 5068 6421</a
+                  >
+                  &nbsp;|&nbsp;
+                  <a
+                    target="_blank"
+                    class="text-decoration-none text-white"
+                    href="https://wa.me/6285717171735"
+                    >0857 1717 1735</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="folus-wrapper">
+            <p class="h5 fw-semibold mt-3">Follow Us</p>
+
+            <div class="d-flex justify-content-center align-items-center">
+              <a
+                target="_blank"
+                href="https://www.tiktok.com/@iikbhaktiwiyata"
+                class="bshadow"
+              >
+                <img
+                  loading="lazy"
+                  src="public/image/icon tiktok.png"
+                  class="img-fluid w-50"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/iikbhaktiwiyata/"
+                class="bshadow"
+              >
+                <img
+                  loading="lazy"
+                  src="public/image/icon ig.png"
+                  class="img-fluid w-50"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <p class="cpr">bhaktafest &copy; 2025</p>
+      </div>
+    </footer>
+
+    <!-- ================================ SCRIPTS ================================ -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let ds = new Date("2025-07-14 14:00:00");
+        let date;
+
+        const dateDiff = () => {
+          date = new Date();
+          let diff = ds - date;
+
+          if (diff <= 0) {
+            document.querySelector(".count-wrapper .day").textContent = 0;
+            document.querySelector(".count-wrapper .hour").textContent = 0;
+            document.querySelector(".count-wrapper .minute").textContent = 0;
+            document.querySelector(".count-wrapper .second").textContent = 0;
+            return;
+          }
+
+          const hari = Math.floor(diff / (1000 * 60 * 60 * 24)) || 0;
+          const jam =
+            Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) || 0;
+          const menit =
+            Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) || 0;
+          const detik = Math.floor((diff % (1000 * 60)) / 1000) || 0;
+
+          document.querySelector(".count-wrapper .day").textContent = hari;
+          document.querySelector(".count-wrapper .hour").textContent = jam;
+          document.querySelector(".count-wrapper .minute").textContent = menit;
+          document.querySelector(".count-wrapper .second").textContent = detik;
+        };
+
+        setInterval(() => {
+          dateDiff();
+        }, 1000);
+        dateDiff();
+      });
+
+      const diffDay = (attr) => {
+        let dn = new Date();
+        let dateList = [
+          "2025-06-03",
+          "2025-06-03",
+          "2025-06-08T13:00:00",
+          "2025-06-13",
+        ];
+        let d;
+
+        switch (attr) {
+          case "foto":
+          case "esport":
+            d = dateList[0];
+            break;
+          case "brnj":
+            d = dateList[1];
+            break;
+          case "brwj":
+            d = dateList[2];
+            break;
+          case "bons":
+            d = dateList[3];
+            break;
+        }
+
+        let date = new Date(d);
+        let dateDiff = date - dn;
+
+        if (attr == "brwj") {
+          let difftime = date.getTime() - dn.getTime();
+          var remainingHours = Math.floor(difftime / (1000 * 60 * 60));
+
+          document.querySelector("." + attr + ">p").textContent =
+            remainingHours > 0 ? remainingHours : "Tutup";
+
+          if (remainingHours < 0) {
+            document
+              .querySelector("." + attr + ">.hl-small")
+              .classList.add("d-none");
+          } else {
+            document.querySelector("." + attr + ">.hl-small").innerHTML =
+              "<small>Jam<br>Lagi</small>";
+          }
+        } else {
+          const hari = Math.floor(dateDiff / (1000 * 60 * 60 * 24)) || 0;
+          document.querySelector("." + attr + ">p").textContent =
+            hari > 0 ? hari : "Tutup";
+          if (hari < 0) {
+            document
+              .querySelector("." + attr + ">.hl-small")
+              .classList.add("d-none");
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
