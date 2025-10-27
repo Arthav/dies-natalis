@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bhakta Fest 2025</title>
+    <title>Dies Natalis Bhakta 2025</title>
 
     <link
       rel="stylesheet"
@@ -32,10 +32,10 @@
       ========================================================================= */
 
       :root {
-        --hero-pink-1: #ff6aa8; /* light pink */
-        --hero-pink-2: #b14bd0; /* magenta-violet */
-        --hero-height-mobile: 680px;
-        --hero-height-desktop: 760px;
+        --hero-pink-1: #22174d;
+        --hero-pink-2: #b14bd0;
+        --hero-height-mobile: 580px;
+        --hero-height-desktop: 660px;
       }
 
       html {
@@ -126,7 +126,6 @@
       ========================================================================= */
       #head-sec {
         position: relative;
-        isolation: isolate; /* keeps overlay contained */
         min-height: var(--hero-height-mobile);
         /* gradient + bg image */
         background-image: radial-gradient(
@@ -146,7 +145,8 @@
         /* “overlay” gives a pink tint while keeping image detail */
         background-blend-mode: normal, overlay, normal;
         color: #fff;
-        overflow: hidden;
+        overflow: visible;
+        width: 100%;
       }
 
       .hero-layer {
@@ -171,7 +171,7 @@
       /* top sponsor row (right) */
       .hero-sponsor {
         top: 24px;
-        right: clamp(12px, 4vw, 32px);
+        right: clamp(24px, 4vw, 32px);
         width: clamp(180px, 28vw, 360px);
         z-index: 3;
       }
@@ -194,8 +194,8 @@
 
       /* headline CTA (center-right) */
       .hero-cta {
-        right: clamp(10px, 6vw, 64px);
-        top: clamp(220px, 26vh, 320px);
+        left: clamp(585px, 6vw, 585px);
+        top: clamp(200px, 24vh, 280px);
         width: clamp(260px, 40vw, 540px);
         z-index: 3;
       }
@@ -203,7 +203,7 @@
       /* total prize tag (bottom-right) */
       .hero-total-prize {
         right: clamp(8px, 5vw, 56px);
-        bottom: 120px;
+        bottom: 0px;
         width: clamp(210px, 28vw, 360px);
         z-index: 3;
       }
@@ -211,7 +211,7 @@
       /* camera (bottom-right, slightly above prize) */
       .hero-camera {
         right: clamp(-20px, 3vw, 10px);
-        bottom: 160px;
+        bottom: 0px;
         width: clamp(180px, 24vw, 320px);
         z-index: 2;
       }
@@ -220,41 +220,112 @@
       .hero-footer {
         left: 50%;
         transform: translateX(-50%);
-        bottom: 0;
+        bottom: -300px;
         width: 1600px;
         max-width: 110%;
-        z-index: 4;
+        z-index: 1;
+        clip-path: inset(0 0 50% 0);
+      }
+      .hero-footer-flipped {
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg) scaleX(-1);
+        bottom: -500px;
+        width: 1600px;
+        max-width: 110%;
+        z-index: 2;
       }
 
-      #scd-sec {
-        /* reserved for future background if needed */
-        /* background: url(public/bg-2-desktop.jpg) no-repeat bottom/cover; */
+      .hero-footer,
+      .hero-footer-flipped {
+        clip-path: inset(0 0 50% 0);
+      }
+
+      #transition-sec {
+        position: relative;
+        isolation: isolate;
+        min-height: 20vh;
+        background-color: #fff; /* white base */
+        z-index: 9;
+        overflow: hidden; /* keeps flipped art contained */
+      }
+
+      /* Background image layer (flipped 180° and mirrored) */
+      #transition-sec::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("public/image/hero_footer.svg") no-repeat bottom/cover;
+        transform: rotate(180deg) scaleX(-1); /* flip + mirror */
+        transform-origin: center;
+        z-index: -1; /* sit behind content */
+        pointer-events: none;
+      }
+
+      #kompetisi-sec {
+        /* layers: left halftone, right halftone, gradient base */
+        background-image: url("public/image/hero-bg.png"),
+          linear-gradient(to right, #22174d, #6b3a94);
+        background-repeat: no-repeat, no-repeat;
+        background-size: cover, cover;
+        background-position: center, center;
+
+        position: relative;
+        isolation: isolate;
+        z-index: 9;
+        padding-bottom: 1px;
+      }
+      .pill-btn {
+        background: #111;
+        color: #fff;
+        border-radius: 999px;
+        border: 0;
+        padding: clamp(10px, 2.8vw, 16px) clamp(16px, 4.5vw, 28px);
+        font-weight: 700;
+        /* Bigger on mobile, cap on desktop */
+        font-size: clamp(1rem, 4.6vw, 1.25rem);
+        line-height: 1.1;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      /* .pill-btn:hover {
+        filter: brightness(1.08);
+      } */
+
+      .pill-icon {
+        height: clamp(22px, 6vw, 28px);
+        width: auto;
+        display: inline-block;
+      }
+
+      /* Optional: keep it from stretching full width inside flex parents */
+      .pill-btn span {
+        white-space: nowrap;
+      }
+
+      #puncak-sec {
+        /* top layer: image | bottom layer: gradient */
+        background-image: url("public/image/hero_footer.svg"),
+          linear-gradient(to right, #22174d, #6b3a94);
+        background-size: cover, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+
+        width: 100%;
+        min-height: 100vh;
+        padding-top: 10rem;
       }
 
       #sponsor-sec {
         background: url("public/image/sponsor_bg.png") no-repeat bottom/cover;
-      }
-
-      #doorprize-sec {
-        background: url("public/image/doorprize_bg.png") no-repeat bottom/cover;
-      }
-
-      #register-sec {
-        background: url("public/image/background bhaktafest 4.jpg") no-repeat
-          bottom/cover;
+        padding-top: 5rem;
       }
 
       footer {
-        background: url("public/image/background bhaktafest 6.jpg") no-repeat;
-        background-position: top 80% left 55%;
-        background-size: 200%;
+        background: #1b0f47;
       }
 
       #foot-sec {
-        background: url("public/image/mobile/background bhaktafest 6.jpg")
-          no-repeat;
-        background-position: top 70% left 50%;
-        background-size: 150%;
+        background: #1b0f47;
       }
 
       /* =========================================================================
@@ -469,29 +540,10 @@
          9) YOUTUBE SECTION
       ========================================================================= */
       #youtube-section {
-        margin-top: 15rem;
-        background: url("public/image/background bhaktafest 2.jpg") no-repeat
-          bottom/cover;
+        margin-top: 2rem;
+        background: #fff;
         position: relative;
         padding-top: 0;
-      }
-      #youtube-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        opacity: 0.8;
-        background: repeating-linear-gradient(
-          -45deg,
-          #ffffff,
-          #ffffff 2px,
-          #ababab 5px,
-          #ababab 25px
-        );
-        z-index: 0;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 15%);
       }
       .container-bulan-juni {
         padding-bottom: 5rem;
@@ -630,7 +682,7 @@
       }
       .minfo-wrapper,
       .img-bf-footer {
-        width: 70%;
+        width: 7 0%;
       }
       .col-kiri {
         order: 2;
@@ -679,14 +731,11 @@
          15) TENANT LIST GRID
       ========================================================================= */
       .tenant-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        display: block !important;
         padding-left: 30px;
-        justify-items: left;
-        align-items: center;
-        text-align: center;
-        text-wrap: nowrap;
+        /* optional: keep your text styles */
+        text-align: left;
+        font-size: 0.775rem;
       }
       .tenant-list ul {
         padding: 0;
@@ -694,7 +743,6 @@
       }
       .tenant-list li {
         list-style-type: disc;
-        text-align: left;
       }
 
       /* =========================================================================
@@ -771,17 +819,21 @@
         }
 
         .hero-info {
-          top: 16px;
+          top: 56px;
           width: clamp(200px, 60vw, 360px);
+          left: 55%;
+          transform: translateX(-50%);
         }
         .hero-sponsor {
-          top: 14px;
+          top: 24px;
           width: clamp(160px, 40vw, 300px);
+          left: 50%;
+          transform: translateX(-50%);
         }
         .hero-people {
           bottom: 140px;
           width: clamp(260px, 80vw, 520px);
-          left: 50%;
+          left: 55%;
           transform: translateX(-50%);
         }
         .hero-cta {
@@ -814,7 +866,21 @@
       /* -- ≥1024px ------------------------------------------------------------ */
       @media screen and (min-width: 1024px) {
         .img-bf-footer {
-          width: 50%;
+          width: 100%;
+        }
+        .puncak-logo {
+          transform: translateX(10%);
+        }
+        .puncak-gratis {
+          transform: translateX(-10%);
+        }
+
+        #puncak-sec {
+          padding-top: 5rem;
+        }
+        .daf-sponsor {
+          width: 100%;
+          transform: translate(10%, 20%);
         }
         footer {
           background-position: top 58% left 55%;
@@ -834,7 +900,7 @@
           min-height: var(--hero-height-desktop);
         }
         .hero-people {
-          bottom: 110px;
+          bottom: 0px;
         }
         .hero-cta {
           top: clamp(240px, 22vh, 300px);
@@ -898,9 +964,47 @@
         .daftar-sponsor-title {
           width: 40%;
         }
-        #youtube-section {
-          margin-top: -5rem;
+        #transition-sec {
+          position: relative;
+          isolation: isolate;
+          min-height: 20vh;
+          background-color: #fff; /* white base */
+          z-index: 9;
+          overflow: hidden; /* keeps flipped art contained */
         }
+
+        /* Background image layer (flipped 180° and mirrored) */
+        #transition-sec::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: url("public/image/hero_footer.svg") no-repeat bottom/cover;
+          transform: rotate(180deg) scaleX(-1); /* flip + mirror */
+          transform-origin: center;
+          z-index: -1; /* sit behind content */
+          pointer-events: none;
+        }
+
+        #youtube-section {
+          background-color: #fff; /* white base */
+          background-image: url("public/image/youtube_left_bg.svg"),
+            url("public/image/youtube_right_bg.svg"); /* remove if not available */
+          background-repeat: no-repeat, no-repeat;
+          background-position: left -60px top 50vh, right -60px top -20px;
+          background-size: 520px auto, 520px auto;
+
+          padding: 2rem 0; /* space so images show */
+        }
+        .youtube-container {
+          width: 50%;
+        }
+
+        /* Center your content */
+        #youtube-section .inner {
+          width: min(100%, 900px);
+          margin: 0 auto;
+        }
+
         .container-bulan-juni {
           padding-top: 5rem;
           padding-bottom: 5rem;
@@ -942,9 +1046,6 @@
         }
         #badge-kemeriahan img {
           width: 20%;
-        }
-        #scd-sec > div {
-          top: -2.5rem;
         }
         #img-muter {
           height: 300px;
@@ -1039,104 +1140,78 @@
     <!-- ================================ HEAD / HERO ================================ -->
     <section id="head-sec">
       <!-- Layered art -->
-      <img
-        src="public/image/hero_ornament.svg"
-        alt=""
-        class="hero-layer hero-ornament"
-      />
-      <img
-        src="public/image/hero_info.svg"
-        alt=""
-        class="hero-layer hero-info"
-      />
-      <img
-        src="public/image/hero_sponsor.svg"
-        alt=""
-        class="hero-layer hero-sponsor"
-      />
-      <img
-        src="public/image/hero_people.svg"
-        alt=""
-        class="hero-layer hero-people"
-      />
-      <img
-        src="public/image/hero_camera.svg"
-        alt=""
-        class="hero-layer hero-camera"
-      />
-      <img
-        src="public/image/hero_total_prize.svg"
-        alt=""
-        class="hero-layer hero-total-prize"
-      />
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <img
+              src="public/image/hero_info.svg"
+              alt=""
+              class="hero-layer hero-info img-fluid"
+            />
+          </div>
+          <div class="col-12 col-lg-6 text-lg-end mt-3 mt-lg-0">
+            <img
+              src="public/image/hero_sponsor.svg"
+              alt=""
+              class="hero-layer hero-sponsor img-fluid"
+            />
+          </div>
+        </div>
+
+        <div class="row" style="top: 50%">
+          <div class="col-12 col-lg-6">
+            <img
+              src="public/image/hero_people.svg"
+              alt=""
+              class="hero-layer hero-people img-fluid"
+            />
+          </div>
+          <div class="col-12 col-lg-6 text-lg-end mt-3 mt-lg-0">
+            <img
+              src="public/image/hero_camera.svg"
+              alt=""
+              class="hero-layer hero-camera img-fluid"
+              width="50%"
+            />
+            <img
+              src="public/image/hero_total_prize.svg"
+              alt=""
+              class="hero-layer hero-total-prize"
+              width="50%"
+            />
+          </div>
+        </div>
+      </div>
+
+      <img src="public/image/hero_cta.svg" alt="" class="hero-layer hero-cta" />
       <img
         src="public/image/hero_footer.svg"
         alt=""
         class="hero-layer hero-footer"
       />
-
-      <!-- (optional) keep your countdown/text for now; sits above layers -->
-      <div class="container py-4">
-        <!-- your countdown / small copy can stay here if you still need it during transition -->
-      </div>
+      <!-- <img
+        src="public/image/hero_footer.svg"
+        alt=""
+        class="hero-layer hero-footer-flipped"
+      /> -->
     </section>
 
-    <!-- ================================ SCROLLER / BANNER ================================ -->
-    <section id="scd-sec">
-      <div class="position-relative" style="overflow-x: clip">
-        <div class="position-relative" id="img-muter">
-          <div class="photobanner">
-            <img src="public/image/image slider animation.png" />
-            <img src="public/image/image slider animation.png" />
-            <img src="public/image/image slider animation.png" />
-          </div>
+    <!-- ================================ Transition ================================ -->
+    <section id="transition-sec"></section>
 
-          <div
-            class="photobanner bannermove-reverse d-block d-md-none"
-            style="top: 80%"
-          >
-            <img src="public/image/image slider animation.png" />
-            <img src="public/image/image slider animation.png" />
-            <img src="public/image/image slider animation.png" />
-          </div>
-        </div>
-
-        <div id="badge-kemeriahan" class="position-absolute w-100">
-          <img
-            loading="lazy"
-            src="public/image/teks kemeriahan.png"
-            class="img-fluid d-block mx-auto"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================ YOUTUBE SECTION ================================ -->
+    <!-- ================================ YOUTUBE ================================ -->
     <section id="youtube-section">
-      <div class="container">
-        <div class="text-center container-bulan-juni">
-          <img
-            src="public/image/teks hadir bulan juli.png"
-            alt="teks bulan juni"
-            class="img-fluid mx-auto teks-hadir-juni"
-          />
-        </div>
-
-        <div>
-          <img
-            id="gratiss"
-            src="public/image/teks gratis .png"
-            class="img-fluid position-absolute"
-            style="left: 5%; top: 5%"
-          />
-        </div>
-
-        <div
-          class="text-center d-flex justify-content-center youtube-iframe pb-5"
-        >
-          <div class="ratio ratio-16x9">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center mb-5 youtube-container">
+            <p>
+              Mengajak para generasi muda dan pelajar Indonesia agar terus
+              semangat menggapai prestasi menjadi versi terbaik dari dirinya
+            </p>
             <iframe
-              src="https://www.youtube.com/embed/1fStOdvoJ7E?si=ri_2MjEEBQsYQOeG&amp;controls=0"
+              width="260"
+              height="415"
+              src="https://www.youtube.com/embed/3o11r3qZlNU?si=UBLr0oRRb_KZfr_5"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1148,317 +1223,111 @@
       </div>
     </section>
 
-    <!-- ================================ SPONSOR / TENANT ================================ -->
-    <section id="sponsor-sec">
-      <div class="row d-flex justify-content-center align-items-center pt-5">
-        <div class="col-lg-6 text-center px-0 title-daftar-sponsor">
-          <img
-            src="public/image/teks daftar sponsor.png"
-            alt="teks sponsor"
-            class="img-fluid daftar-sponsor-title"
-          />
-        </div>
-
-        <div
-          class="col-lg-6 text-center pt-5 position-relative px-0 info-detail-sponsor"
-        >
-          <p style="font-size: 1.25rem; font-weight: bold">
-            Info Detail Sponsor<br />
-            & Sewa Tenant <br />
-          </p>
-
-          <a
-            href="https://blog.iik.ac.id/eventbhakta/2025/04/21/sponsorship-sewa-stand-bhakta-fest-2025/"
-            target="_blank"
-            class="btn btn-pink"
-            >Klik Disini</a
-          >
-
-          <img
-            src="public/image/icon arrow.png"
-            class="img-fluid position-absolute hand-h arrow-icon"
-            style="top: 10; width: 10%"
-          />
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="text-center mt-5 mb-3">
-          <img
-            src="public/image/title tenant.png"
-            class="img-fluid tenant-title"
-          />
-        </div>
-
-        <div class="tenant-list pb-5">
-          <ul class="list-unstyled d-grid gap-3">
-            <li class="col-3 col-md-6">Roti Darel</li>
-            <li class="col-3 col-md-6">Azarine</li>
-            <li class="col-3 col-md-6">Bakso Pak As</li>
-            <li class="col-3 col-md-6">Kantin Mykail Jus</li>
-            <li class="col-3 col-md-6">PPMB dan IIK Shop</li>
-            <li class="col-3 col-md-6">Korean Food dan Milo</li>
-            <li class="col-3 col-md-6">Kantin Dragon</li>
-            <li class="col-3 col-md-6">Kantin Ijo Mama</li>
-            <li class="col-3 col-md-6">Kantin Elrasya</li>
-            <li class="col-3 col-md-6">Kantin Frescourd</li>
-          </ul>
-
-          <ul class="list-unstyled d-grid gap-3">
-            <li class="col-3 col-md-6">Kuliner Korean Street Food</li>
-            <li class="col-3 col-md-6">Kantin Dapur khanza</li>
-            <li class="col-3 col-md-6">Stand Warmindo / Kantin Eny</li>
-            <li class="col-3 col-md-6">Kantin Boek Yati</li>
-            <li class="col-3 col-md-6">RSGM</li>
-            <li class="col-3 col-md-6">Little Sweet Project</li>
-            <li class="col-3 col-md-6">Es Teh Hayo dan Nasbung</li>
-            <li class="col-3 col-md-6">APOTEK IIK Bhakta</li>
-            <li class="col-3 col-md-6">Orenji</li>
-            <li class="col-3 col-md-6">Beads bymeow</li>
-          </ul>
-
-          <ul class="list-unstyled d-grid gap-3">
-            <li class="col-3 col-md-6">Sano sano</li>
-            <li class="col-3 col-md-6">Pota mine</li>
-            <li class="col-3 col-md-6">Egabi farm</li>
-            <li class="col-3 col-md-6">Japanese souffle pancake (Ntep & Co)</li>
-            <li class="col-3 col-md-6">Es cidhuk</li>
-            <li class="col-3 col-md-6">Dimson</li>
-            <li class="col-3 col-md-6">Minuman Thai Tea</li>
-            <li class="col-3 col-md-6">Stand Bang Her</li>
-            <li class="col-3 col-md-6">Here Mie Go</li>
-            <li class="col-3 col-md-6">Kantin Amanah</li>
-          </ul>
-
-          <ul class="list-unstyled d-grid gap-3">
-            <li class="col-3 col-md-6">Bakso 3 Saudara</li>
-            <li class="col-3 col-md-6">Makwo coffe</li>
-            <li class="col-3 col-md-6">Dapur FARDA</li>
-            <li class="col-3 col-md-6">Arwana pentol</li>
-            <li class="col-3 col-md-6">Tasya 18</li>
-            <li class="col-3 col-md-6">Mirai Cookies</li>
-            <li class="col-3 col-md-6">Pukis keke</li>
-            <li class="col-3 col-md-6">Mixue</li>
-            <li class="col-3 col-md-6">Dunia aci by duriantok</li>
-            <li class="col-3 col-md-6">Mocapcin</li>
-          </ul>
-        </div>
-
-        <div class="text-center mt-5">
-          <img
-            src="public/image/title sponsor.png"
-            class="img-fluid tenant-title"
-          />
-          <ul class="list-unstyled row g-3">
-            <li class="col-6 col-md-3">
-              <img
-                loading="lazy"
-                src="public/image/sponsor_azarine.png"
-                class="img-fluid rounded mx-auto d-block"
-                alt="Azarine Our Sponsor, Bhakta Fest 2025"
-                style="object-fit: contain; width: 150px; height: 200px"
-              />
-            </li>
-            <li class="col-6 col-md-3">
-              <img
-                loading="lazy"
-                src="public/image/sponsor_wardah.png"
-                class="img-fluid rounded mx-auto d-block"
-                alt="Wardah Our Sponsor, Bhakta Fest 2025"
-                style="object-fit: contain; width: 150px; height: 200px"
-              />
-            </li>
-            <li class="col-6 col-md-3">
-              <img
-                loading="lazy"
-                src="public/image/sponsor_hexos.png"
-                class="img-fluid rounded mx-auto d-block"
-                alt="Hexos Our Sponsor, Bhakta Fest 2025"
-                style="object-fit: contain; width: 150px; height: 200px"
-              />
-            </li>
-            <li class="col-6 col-md-3">
-              <img
-                loading="lazy"
-                src="public/image/sponsor_oronaminc.jpg"
-                class="img-fluid rounded mx-auto d-block"
-                alt="Oronamin C Our Sponsor, Bhakta Fest 2025"
-                style="object-fit: contain; width: 150px; height: 200px"
-              />
-            </li>
-            <li class="col-6 col-md-3">
-              <img
-                loading="lazy"
-                src="public/image/sponsor_darel.png"
-                class="img-fluid rounded mx-auto d-block"
-                alt="Darel Our Sponsor, Bhakta Fest 2025"
-                style="object-fit: contain; width: 150px; height: 200px"
-              />
-            </li>
-          </ul>
-        </div>
-
-        <div class="sponsor-list pb-5"></div>
-      </div>
-    </section>
-
-    <!-- ================================ REGISTER CARDS ================================ -->
-    <section id="register-sec">
-      <div class="container">
-        <div class="row d-flex justify-content-center align-items-center">
-          <!-- card left -->
-          <div class="col-lg-6 card-register">
-            <div class="register-card left position-relative">
-              <img
-                src="public/image/icon bhakta kpop.png"
-                alt="icon bhakta kpop"
-                class="img-fluid img-register"
-              />
-
-              <p class="sub-title pt-3 pb-5">
-                Tunjukkan pesonamu di panggung dengan gaya dan gerakan ala
-                bintang K-Pop favoritmu! <br />
-                Tunjukkan gaya dan energimu di atas panggung!
-              </p>
-
-              <div class="details">
-                <p class="register-info-title">
-                  <strong>Pendaftaran Terakhir</strong>
-                </p>
-                <p class="register-info-bar">Jumat, 4 Juli 2025</p>
-              </div>
-
-              <div class="details">
-                <p class="register-info-title"><strong>Hadiah Total</strong></p>
-                <p class="register-info-bar">Rp. 6.000.000,-</p>
-              </div>
-
-              <div class="details">
-                <p class="register-info-title">
-                  <strong>Terbuka untuk</strong>
-                </p>
-                <p class="register-info-bar">Internal dan Pelajar Umum</p>
-              </div>
-
-              <div class="buttons">
-                <a
-                  href="https://blog.iik.ac.id/eventbhakta/2025/04/15/bhakta-k-pop-star-2025/"
-                  target="_blank"
-                  class="btn-info"
-                  >Info Lengkap</a
-                >
-
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSe-lCgZUwTX0COr9nE8y1S7T-qtWivLdhV7yTTJbQjhLQk6Tg/viewform"
-                  target="_blank"
-                >
-                  <img
-                    src="public/image/icon daftar sekarang.png"
-                    alt="button daftar"
-                    class="img-fluid btn-daftar"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- card right -->
-          <div class="col-lg-6 card-register">
-            <div class="register-card right position-relative">
-              <img
-                src="public/image/icon bhakta onstage.png"
-                alt="icon bhakta onstage"
-                class="img-fluid img-register"
-              />
-
-              <p class="sub-title pt-3 pb-5">
-                Penampilan live music dan bakat seni oleh anak muda berbakat.
-                Terbuka bagi civitas Bhakta dan pelajar umum. Ayo tampilkan
-                bakatmu di atas panggung!
-              </p>
-
-              <div class="details">
-                <p class="register-info-title">
-                  <strong>Pendaftaran Terakhir</strong>
-                </p>
-                <p class="register-info-bar">Jumat, 4 Juli 2025</p>
-              </div>
-
-              <div class="details">
-                <p class="register-info-title"><strong>Hadiah Total</strong></p>
-                <p class="register-info-bar">Rp. 3.000.000,-</p>
-              </div>
-
-              <div class="details">
-                <p class="register-info-title">
-                  <strong>Terbuka untuk</strong>
-                </p>
-                <p class="register-info-bar">Internal dan Pelajar Umum</p>
-              </div>
-
-              <div class="buttons">
-                <a
-                  href="https://blog.iik.ac.id/eventbhakta/2025/04/14/bhakta-on-stage-2025/"
-                  target="_blank"
-                  class="btn-info"
-                  >Info Lengkap</a
-                >
-
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdGiskwsuPlIrAXk4i4riQxIaNoqHPMcQd-flKcq0M8wF9tvw/viewform"
-                  target="_blank"
-                >
-                  <img
-                    src="public/image/icon daftar sekarang.png"
-                    alt="button daftar"
-                    class="img-fluid btn-daftar"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="text-center d-flex align-items-center justify-content-center"
-        >
-          <img
-            src="public/image/teks jangan lewatkan.png"
-            alt="teks jangan lewatkan"
-            class="img-fluid img-lewatkan"
-          />
-        </div>
-
-        <div class="row d-flex justify-content-center align-items-center">
-          <div class="col-lg-6 card-register">
-            <div class="register-card left card-small position-relative">
-              <img
-                src="public/image/icon fireworks party.png"
-                alt="icon fireworks party"
-                class="img-fluid"
-              />
-              <img
-                src="public/image/icon arrow.png"
-                class="img-fluid position-absolute hand-h arrow-icon-lewatkan"
-              />
-            </div>
-          </div>
-
-          <div class="col-lg-6 card-register">
-            <div class="register-card right card-small position-relative">
-              <a
-                href="https://blog.iik.ac.id/eventbhakta/2025/04/15/dress-code-challenge-2025/"
-                target="_blank"
+    <!-- ================================ KOMPETISI ================================ -->
+    <section id="kompetisi-sec">
+      <div class="container py-5">
+        <div class="mb-5 mt-3">
+          <!-- Heading pill -->
+          <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5">
+              <!-- Use <a> if it should navigate -->
+              <button
+                type="button"
+                class="btn pill-btn d-inline-flex align-items-center gap-2"
               >
                 <img
-                  src="public/image/icon dresscode.png"
-                  alt="icon dresscode"
-                  class="img-fluid"
+                  src="public/image/kompetisi_icon_1.svg"
+                  alt=""
+                  class="pill-icon"
                 />
-              </a>
+                <span>Kompetisi Bakat &amp; Seni</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Three program blocks -->
+          <div class="row gy-5 text-center">
+            <!-- Card 1 -->
+            <div class="col-12 col-md-4">
               <img
-                src="public/image/icon arrow.png"
-                class="img-fluid position-absolute hand-h arrow-icon-lewatkan"
+                src="public/image/kompetisi_1.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4">
+              <img
+                src="public/image/kompetisi_2.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4">
+              <img
+                src="public/image/kompetisi_3.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 mt-3">
+          <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5">
+              <button
+                type="button"
+                class="btn pill-btn d-inline-flex align-items-center gap-2"
+              >
+                <img
+                  src="public/image/kompetisi_icon_2.svg"
+                  alt=""
+                  class="pill-icon"
+                />
+                <span>Kompetisi Akademik</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Three program blocks -->
+          <div class="row gy-5 text-center">
+            <!-- Card 1 -->
+            <div class="col-12 col-md-3 mt-3">
+              <img
+                src="public/image/kompetisi_akademik_1.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-md-3">
+              <img
+                src="public/image/kompetisi_akademik_2.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-3">
+              <img
+                src="public/image/kompetisi_akademik_3.svg"
+                alt=""
+                class="img-fluid mb-3"
+              />
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-md-3">
+              <img
+                src="public/image/kompetisi_akademik_4.svg"
+                alt=""
+                class="img-fluid mb-3"
               />
             </div>
           </div>
@@ -1466,68 +1335,142 @@
       </div>
     </section>
 
-    <!-- ================================ DOORPRIZE ================================ -->
-    <section id="doorprize-sec" class="position-relative">
+    <!-- ================================ PUNCAK ================================ -->
+    <section id="puncak-sec">
+      <div class="container py-5">
+        <!-- HERO ROW -->
+        <div class="row align-items-center">
+          <!-- Left: banner centered on desktop -->
+          <div class="col-lg-10 mb-4 mb-lg-0 text-center puncak-logo">
+            <img
+              src="public/image/puncak_dies_natalis.svg"
+              alt="PUNCAK DIES NATALIS banner"
+              class="img-fluid d-inline-block mb-3"
+            />
+          </div>
+
+          <div class="col-lg-2 text-center text-lg-end puncak-gratis">
+            <div>
+              <img
+                src="public/image/puncak_gratis.svg"
+                alt=""
+                width="160"
+                class="img-fluid d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRAMS ROW -->
+        <div class="row mt-5 text-center">
+          <!-- Card 1 -->
+          <div class="col-12 col-lg-3 mb-4">
+            <img
+              src="public/image/puncak_card_1.svg"
+              alt="Program 1"
+              class="img-fluid mb-3"
+            />
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-12 col-lg-3 mb-4">
+            <img
+              src="public/image/puncak_card_2.svg"
+              alt="Program 2"
+              class="img-fluid mb-3"
+            />
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-12 col-lg-3 mb-4">
+            <img
+              src="public/image/puncak_card_3.svg"
+              alt="Program 3"
+              class="img-fluid mb-3"
+            />
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-12 col-lg-3 mb-4">
+            <img
+              src="public/image/puncak_card_4.svg"
+              alt="Program 4"
+              class="img-fluid mb-3"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ SPONSOR ================================ -->
+    <section id="sponsor-sec">
       <div class="container">
-        <div
-          class="row d-flex justify-content-center align-items-center doorprize-row"
-        >
-          <div class="col-lg-3">
-            <a
-              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
-              target="_blank"
-            >
-              <img
-                src="public/image/image doorprize 1.png"
-                alt="door prize 1"
-                class="img-fluid img-doorprize img-doorprize-desktop"
-              />
-            </a>
+        <div class="row flex-column-reverse flex-md-row">
+          <div class="col-md-4 mb-3">
+            <p style="text-align: left; padding-left: 5%">
+              <strong>Previous Sponsor</strong>
+            </p>
+            <img
+              src="public/sponsor/prev_sponsor.png"
+              alt="Previous Sponsor"
+              class="img-fluid w-100"
+            />
           </div>
+          <div class="col-md-5 mb-3">
+            <p style="text-align: left; padding-left: 5%">
+              <strong>Previous Tenant</strong>
+            </p>
+            <div class="tenant-list pb-5">
+              <ul class="list-unstyled row row-cols-2 row-cols-md-3 g-2">
+                <li class="col">Percetakan Mustika</li>
+                <li class="col">Ichiban Crepes</li>
+                <li class="col">Bakso Pak As</li>
+                <li class="col">Kantin Mykail Jus</li>
+                <li class="col">Orenji</li>
+                <li class="col">Pemadam Kelaparan</li>
+                <li class="col">Manggala Food</li>
+                <li class="col">Kantin Dapur Khanza</li>
+                <li class="col">De Poci</li>
+                <li class="col">Tongji</li>
+                <li class="col">Ungkepin</li>
 
-          <div class="col-lg-3">
-            <a
-              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
-              target="_blank"
-            >
-              <img
-                src="public/image/teks hadiah langsung.png"
-                alt="door prize langsung"
-                class="img-fluid img-doorprize"
-              />
-            </a>
+                <li class="col">Dell Food</li>
+                <li class="col">Korean Food dan Milo</li>
+                <li class="col">Angkringan Mbah Semar</li>
+                <li class="col">Kantin Moma</li>
+                <li class="col">Republik Dendy Cafe</li>
+                <li class="col">Sano Sano</li>
+                <li class="col">Kantin Bu Yatik</li>
+                <li class="col">Alice Ay</li>
+                <li class="col">Kantin Dragon</li>
+                <li class="col">Kantin Ijo Mama</li>
+                <li class="col">Kantin Elrasya</li>
+
+                <li class="col">Kantin Frescourd</li>
+                <li class="col">Kuliner Korean Street Food</li>
+                <li class="col">Kantin Yosika</li>
+                <li class="col">Ayam Geprek Sai</li>
+                <li class="col">Pota Mine</li>
+                <li class="col">Little Sweet Project</li>
+                <li class="col">Kriak Kriuk</li>
+                <li class="col">Kantin Raffi</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="col-lg-3">
-            <a
-              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
-              target="_blank"
+          <div class="col-md-3 mb-3">
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
             >
               <img
-                src="public/image/teks doorprize.png"
-                alt="teks door prize"
-                class="img-fluid img-doorprize"
+                src="public/sponsor/daftar_jadi_sponsor.svg"
+                class="img-fluid daf-sponsor"
+                alt="Daftar Jadi Sponsor"
               />
-            </a>
-          </div>
-
-          <div class="col-lg-3">
-            <a
-              href="https://blog.iik.ac.id/eventbhakta/2025/04/14/hadiah-langsung-bhakta-fest-2025/"
-              target="_blank"
-            >
-              <img
-                src="public/image/image doorprize 2.png"
-                alt="door prize 2"
-                class="img-fluid img-doorprize img-doorprize-desktop"
-                style="max-width: 10rem"
-              />
-              <img
-                src="public/image/image doorprize mobile.png"
-                alt="door prize 1"
-                class="img-fluid img-doorprize img-doorprize-mobile"
-              />
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1539,186 +1482,66 @@
         class="container fw-semibold py-4 text-center"
         style="color: #231779"
       >
-        <div>
-          <img
-            src="public/image/logo bhakta fest big.png"
-            class="img-fluid img-bf-footer"
-            alt="Bhakta Fest 2025"
-          />
-        </div>
-
-        <div class="my-3 my-lg-5">
-          <div class="mx-auto minfo-wrapper">
-            <p class="h5 fw-semibold text-center">More Information :</p>
-
-            <div class="position-relative">
-              <img
-                src="public/image/pink ban.png"
-                class="img-fluid w-100"
-                alt=""
-              />
-
-              <div
-                class="d-flex w-100 align-items-center p-2 justify-content-center"
-                style="
-                  position: absolute;
-                  top: 45%;
-                  left: 50%;
-                  width: max-content;
-                  transform: translate(-50%, -50%);
-                "
-              >
-                <img
-                  src="public/wa.svg"
-                  class="img-fluid mx-2"
-                  style="width: 1.2rem"
-                />
-
-                <p class="mb-0 wacp" style="color: white">
-                  <a
-                    target="_blank"
-                    class="text-decoration-none text-white"
-                    href="https://wa.me/6285150686421"
-                    >0851 5068 6421</a
-                  >
-                  &nbsp;|&nbsp;
-                  <a
-                    target="_blank"
-                    class="text-decoration-none text-white"
-                    href="https://wa.me/6285717171735"
-                    >0857 1717 1735</a
-                  >
-                </p>
-              </div>
-            </div>
+        <div class="row align-items-center">
+          <div class="col-md-4 mb-3">
+            <img
+              src="public/image/hero_info.svg"
+              class="img-fluid img-bf-footer"
+              alt="Dies Natalis 2025"
+              style="width: 50%"
+            />
           </div>
-
-          <div class="folus-wrapper">
-            <p class="h5 fw-semibold mt-3">Follow Us</p>
-
-            <div class="d-flex justify-content-center align-items-center">
-              <a
-                target="_blank"
-                href="https://www.tiktok.com/@iikbhaktiwiyata"
-                class="bshadow"
-              >
+          <div class="col-md-4 mb-3">
+            <p style="color: #fff">
+              Event yang sarat akan kompetisi positif. Merupakan wadah bagi
+              generasi muda dalam menyalurkan bakat akademik dan seni.
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <a
+              href="https://www.iik.ac.id/diesnatalis2025"
+              target="_blank"
+              style="color: #fff"
+            >
+              <span class="d-inline-flex align-items-center">
                 <img
-                  loading="lazy"
-                  src="public/image/icon tiktok.png"
-                  class="img-fluid w-50"
+                  src="public/image/world-wide-web.svg"
+                  alt="world-wide-web"
+                  width="20"
+                  height="20"
+                  class="me-2"
                 />
-              </a>
-              <a
-                target="_blank"
-                href="https://www.instagram.com/iikbhaktiwiyata/"
-                class="bshadow"
-              >
+                www.iik.ac.id/diesnatalis2025
+              </span>
+            </a>
+
+            <a
+              href="https://www.iik.ac.id/diesnatalis2025"
+              target="_blank"
+              style="color: #fff"
+            >
+              <span class="d-inline-flex align-items-center">
                 <img
-                  loading="lazy"
-                  src="public/image/icon ig.png"
-                  class="img-fluid w-50"
+                  src="public/image/telephone.svg"
+                  alt="telephone"
+                  width="20"
+                  height="20"
+                  class="me-2"
                 />
-              </a>
-            </div>
+                0851 5068 6421 | 0857 1717 1735
+              </span>
+            </a>
           </div>
         </div>
-
-        <p class="cpr">bhaktafest &copy; 2025</p>
+        <div class="row">
+          <div class="col-md-12">
+            <p style="color: #fff">diesnatalis © 2025</p>
+          </div>
+        </div>
       </div>
     </footer>
 
     <!-- ================================ SCRIPTS ================================ -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        let ds = new Date("2025-07-14 14:00:00");
-        let date;
-
-        const dateDiff = () => {
-          date = new Date();
-          let diff = ds - date;
-
-          if (diff <= 0) {
-            document.querySelector(".count-wrapper .day").textContent = 0;
-            document.querySelector(".count-wrapper .hour").textContent = 0;
-            document.querySelector(".count-wrapper .minute").textContent = 0;
-            document.querySelector(".count-wrapper .second").textContent = 0;
-            return;
-          }
-
-          const hari = Math.floor(diff / (1000 * 60 * 60 * 24)) || 0;
-          const jam =
-            Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) || 0;
-          const menit =
-            Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) || 0;
-          const detik = Math.floor((diff % (1000 * 60)) / 1000) || 0;
-
-          document.querySelector(".count-wrapper .day").textContent = hari;
-          document.querySelector(".count-wrapper .hour").textContent = jam;
-          document.querySelector(".count-wrapper .minute").textContent = menit;
-          document.querySelector(".count-wrapper .second").textContent = detik;
-        };
-
-        setInterval(() => {
-          dateDiff();
-        }, 1000);
-        dateDiff();
-      });
-
-      const diffDay = (attr) => {
-        let dn = new Date();
-        let dateList = [
-          "2025-06-03",
-          "2025-06-03",
-          "2025-06-08T13:00:00",
-          "2025-06-13",
-        ];
-        let d;
-
-        switch (attr) {
-          case "foto":
-          case "esport":
-            d = dateList[0];
-            break;
-          case "brnj":
-            d = dateList[1];
-            break;
-          case "brwj":
-            d = dateList[2];
-            break;
-          case "bons":
-            d = dateList[3];
-            break;
-        }
-
-        let date = new Date(d);
-        let dateDiff = date - dn;
-
-        if (attr == "brwj") {
-          let difftime = date.getTime() - dn.getTime();
-          var remainingHours = Math.floor(difftime / (1000 * 60 * 60));
-
-          document.querySelector("." + attr + ">p").textContent =
-            remainingHours > 0 ? remainingHours : "Tutup";
-
-          if (remainingHours < 0) {
-            document
-              .querySelector("." + attr + ">.hl-small")
-              .classList.add("d-none");
-          } else {
-            document.querySelector("." + attr + ">.hl-small").innerHTML =
-              "<small>Jam<br>Lagi</small>";
-          }
-        } else {
-          const hari = Math.floor(dateDiff / (1000 * 60 * 60 * 24)) || 0;
-          document.querySelector("." + attr + ">p").textContent =
-            hari > 0 ? hari : "Tutup";
-          if (hari < 0) {
-            document
-              .querySelector("." + attr + ">.hl-small")
-              .classList.add("d-none");
-          }
-        }
-      };
-    </script>
+    <script></script>
   </body>
 </html>
