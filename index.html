@@ -38,6 +38,11 @@
         --hero-height-desktop: 660px;
       }
 
+      /* Debugging */
+      /* * {
+        outline: 1px dashed rgba(255, 0, 0, 0.2);
+      } */
+
       html {
         scroll-behavior: smooth;
         /* Hide scrollbar for IE, Edge and Firefox */
@@ -51,6 +56,28 @@
 
       * {
         font-family: lato-regular, sans-serif;
+      }
+
+      html,
+      body {
+        width: fit-content;
+        max-width: 100%;
+        overflow-x: hidden; /* kill stray horizontal scroll */
+      }
+
+      /* Media & sections never exceed viewport width */
+      img,
+      svg,
+      video,
+      iframe {
+        max-width: 100%;
+        height: auto;
+        display: block; /* prevents inline-gap overflow */
+      }
+
+      section,
+      .container {
+        max-width: 100%;
       }
 
       /* =========================================================================
@@ -163,7 +190,7 @@
       /* top info (left) */
       .hero-info {
         top: 28px;
-        left: clamp(12px, 4vw, 32px);
+        left: clamp(52px, 4vw, 72px);
         width: clamp(220px, 32vw, 420px);
         z-index: 3;
       }
@@ -195,7 +222,7 @@
       /* headline CTA (center-right) */
       .hero-cta {
         left: clamp(585px, 6vw, 585px);
-        top: clamp(200px, 24vh, 280px);
+        top: clamp(240px, 24vh, 300px);
         width: clamp(260px, 40vw, 540px);
         z-index: 3;
       }
@@ -203,9 +230,17 @@
       /* total prize tag (bottom-right) */
       .hero-total-prize {
         right: clamp(8px, 5vw, 56px);
-        bottom: 0px;
-        width: clamp(210px, 28vw, 360px);
-        z-index: 3;
+        bottom: -80px;
+        width: clamp(210px, 30vw, 360px);
+        z-index: 13;
+      }
+
+      .hero-gratis {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: -20px;
+        width: clamp(210px, 30vw, 360px);
+        z-index: 13;
       }
 
       /* camera (bottom-right, slightly above prize) */
@@ -213,7 +248,8 @@
         right: clamp(-20px, 3vw, 10px);
         bottom: 0px;
         width: clamp(180px, 24vw, 320px);
-        z-index: 2;
+        z-index: 9;
+        bottom: -40px;
       }
 
       /* wavy footer (sits on bottom) */
@@ -229,7 +265,7 @@
       .hero-footer-flipped {
         left: 50%;
         transform: translateX(-50%) rotate(180deg) scaleX(-1);
-        bottom: -500px;
+        bottom: -140px;
         width: 1600px;
         max-width: 110%;
         z-index: 2;
@@ -247,18 +283,6 @@
         background-color: #fff; /* white base */
         z-index: 9;
         overflow: hidden; /* keeps flipped art contained */
-      }
-
-      /* Background image layer (flipped 180° and mirrored) */
-      #transition-sec::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url("public/image/hero_footer.svg") no-repeat bottom/cover;
-        transform: rotate(180deg) scaleX(-1); /* flip + mirror */
-        transform-origin: center;
-        z-index: -1; /* sit behind content */
-        pointer-events: none;
       }
 
       #kompetisi-sec {
@@ -279,7 +303,7 @@
         color: #fff;
         border-radius: 999px;
         border: 0;
-        padding: clamp(10px, 2.8vw, 16px) clamp(16px, 4.5vw, 28px);
+        padding: clamp(10px, 2.8vw, 16px) clamp(16px, 5.5vw, 28px);
         font-weight: 700;
         /* Bigger on mobile, cap on desktop */
         font-size: clamp(1rem, 4.6vw, 1.25rem);
@@ -545,9 +569,6 @@
         position: relative;
         padding-top: 0;
       }
-      .container-bulan-juni {
-        padding-bottom: 5rem;
-      }
       .youtube-iframe {
         margin-top: 3rem;
         padding-top: 2rem;
@@ -811,11 +832,28 @@
         .tenant-list {
           grid-template-columns: repeat(1, 1fr);
         }
+
+        .tenant-list {
+          padding-left: 30px;
+        }
+        /* Neutralize row’s negative margins inside tenant-list only */
+        .tenant-list .row {
+          --bs-gutter-x: 0; /* kill horizontal gutters in that block */
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .tenant-list .col {
+          padding-left: 0;
+          padding-right: 0;
+        }
         .card-register {
           padding: 1rem 0;
         }
         .card-register .register-card {
           padding: 1.5rem;
+        }
+        .puncak-list {
+          justify-items: center;
         }
 
         .hero-info {
@@ -830,6 +868,16 @@
           left: 50%;
           transform: translateX(-50%);
         }
+
+        .head-sec::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to right, #22174d, #6b3a94);
+        }
         .hero-people {
           bottom: 140px;
           width: clamp(260px, 80vw, 520px);
@@ -837,22 +885,43 @@
           transform: translateX(-50%);
         }
         .hero-cta {
-          top: auto;
-          bottom: 210px;
-          right: 50%;
-          transform: translateX(50%);
-          width: clamp(260px, 86vw, 560px);
+          top: 32rem;
+          width: 10rem;
+          left: 8rem;
+          z-index: 13;
         }
         .hero-camera {
           display: none;
-        } /* optional: hide camera on small screens */
+        }
+        .hero-gratis {
+          bottom: 2rem;
+          width: 4rem;
+          left: 1rem;
+          z-index: 13;
+        }
         .hero-total-prize {
           right: 50%;
           transform: translateX(50%);
           bottom: 90px;
         }
+
         .hero-footer {
           width: 1400px;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -50px;
+          max-width: 110%;
+          z-index: 1;
+          /* clip-path: inset(0 0 50% 0); */
+        }
+
+        .hero-footer-flipped {
+          left: 50%;
+          transform: translateX(-50%) rotate(180deg) scaleX(-1);
+          bottom: -50px;
+          width: 1600px;
+          max-width: 110%;
+          z-index: 2;
         }
       }
 
@@ -880,7 +949,7 @@
         }
         .daf-sponsor {
           width: 100%;
-          transform: translate(10%, 20%);
+          transform: translate(-10%, 20%);
         }
         footer {
           background-position: top 58% left 55%;
@@ -900,10 +969,11 @@
           min-height: var(--hero-height-desktop);
         }
         .hero-people {
-          bottom: 0px;
+          bottom: -60px;
+          z-index: 9;
         }
         .hero-cta {
-          top: clamp(240px, 22vh, 300px);
+          top: 18%;
         }
 
         #head-sec > .container {
@@ -971,18 +1041,6 @@
           background-color: #fff; /* white base */
           z-index: 9;
           overflow: hidden; /* keeps flipped art contained */
-        }
-
-        /* Background image layer (flipped 180° and mirrored) */
-        #transition-sec::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: url("public/image/hero_footer.svg") no-repeat bottom/cover;
-          transform: rotate(180deg) scaleX(-1); /* flip + mirror */
-          transform-origin: center;
-          z-index: -1; /* sit behind content */
-          pointer-events: none;
         }
 
         #youtube-section {
@@ -1139,7 +1197,6 @@
 
     <!-- ================================ HEAD / HERO ================================ -->
     <section id="head-sec">
-      <!-- Layered art -->
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-6">
@@ -1179,6 +1236,12 @@
               class="hero-layer hero-total-prize"
               width="50%"
             />
+            <img
+              src="public/image/hero_gratis.svg"
+              alt=""
+              class="hero-layer hero-gratis"
+              width="50%"
+            />
           </div>
         </div>
       </div>
@@ -1189,15 +1252,12 @@
         alt=""
         class="hero-layer hero-footer"
       />
-      <!-- <img
+      <img
         src="public/image/hero_footer.svg"
         alt=""
         class="hero-layer hero-footer-flipped"
-      /> -->
+      />
     </section>
-
-    <!-- ================================ Transition ================================ -->
-    <section id="transition-sec"></section>
 
     <!-- ================================ YOUTUBE ================================ -->
     <section id="youtube-section">
@@ -1209,9 +1269,9 @@
               semangat menggapai prestasi menjadi versi terbaik dari dirinya
             </p>
             <iframe
-              width="260"
-              height="415"
-              src="https://www.youtube.com/embed/3o11r3qZlNU?si=UBLr0oRRb_KZfr_5"
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/Sszyi_hoDb8?si=-Y9Q3r-UXXUm1f2m"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1249,29 +1309,44 @@
           <div class="row gy-5 text-center">
             <!-- Card 1 -->
             <div class="col-12 col-md-4">
-              <img
-                src="public/image/kompetisi_1.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/25/imb-season-12-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_1.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
 
             <!-- Card 2 -->
             <div class="col-12 col-md-4">
-              <img
-                src="public/image/kompetisi_2.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/28/lomba-poster-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_2.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
 
             <!-- Card 3 -->
             <div class="col-12 col-md-4">
-              <img
-                src="public/image/kompetisi_3.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/28/lomba-film-pendek-sma-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_3.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1296,39 +1371,59 @@
           <!-- Three program blocks -->
           <div class="row gy-5 text-center">
             <!-- Card 1 -->
-            <div class="col-12 col-md-3 mt-3">
-              <img
-                src="public/image/kompetisi_akademik_1.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+            <div class="col-12 col-md-3">
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/26/lomba-karya-tulis-ilmiah-lkti-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_akademik_1.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
 
             <!-- Card 2 -->
             <div class="col-12 col-md-3">
-              <img
-                src="public/image/kompetisi_akademik_2.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/25/sains-competition-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_akademik_2.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
 
             <!-- Card 3 -->
             <div class="col-12 col-md-3">
-              <img
-                src="public/image/kompetisi_akademik_3.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/26/lomba-esai-pelajar-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_akademik_3.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
 
             <!-- Card 4 -->
             <div class="col-12 col-md-3">
-              <img
-                src="public/image/kompetisi_akademik_4.svg"
-                alt=""
-                class="img-fluid mb-3"
-              />
+              <a
+                href="https://blog.iik.ac.id/eventbhakta/2025/09/26/lomba-cerpen-2025/"
+                target="_blank"
+              >
+                <img
+                  src="public/image/kompetisi_akademik_4.svg"
+                  alt=""
+                  class="img-fluid mb-3"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1338,9 +1433,7 @@
     <!-- ================================ PUNCAK ================================ -->
     <section id="puncak-sec">
       <div class="container py-5">
-        <!-- HERO ROW -->
         <div class="row align-items-center">
-          <!-- Left: banner centered on desktop -->
           <div class="col-lg-10 mb-4 mb-lg-0 text-center puncak-logo">
             <img
               src="public/image/puncak_dies_natalis.svg"
@@ -1349,7 +1442,9 @@
             />
           </div>
 
-          <div class="col-lg-2 text-center text-lg-end puncak-gratis">
+          <div
+            class="col-lg-2 text-center puncak-list text-lg-end puncak-gratis"
+          >
             <div>
               <img
                 src="public/image/puncak_gratis.svg"
@@ -1361,10 +1456,8 @@
           </div>
         </div>
 
-        <!-- PROGRAMS ROW -->
         <div class="row mt-5 text-center">
-          <!-- Card 1 -->
-          <div class="col-12 col-lg-3 mb-4">
+          <div class="col-12 col-lg-3 mb-4 puncak-list">
             <img
               src="public/image/puncak_card_1.svg"
               alt="Program 1"
@@ -1372,8 +1465,7 @@
             />
           </div>
 
-          <!-- Card 2 -->
-          <div class="col-12 col-lg-3 mb-4">
+          <div class="col-12 col-lg-3 mb-4 puncak-list">
             <img
               src="public/image/puncak_card_2.svg"
               alt="Program 2"
@@ -1381,8 +1473,7 @@
             />
           </div>
 
-          <!-- Card 3 -->
-          <div class="col-12 col-lg-3 mb-4">
+          <div class="col-12 col-lg-3 mb-4 puncak-list">
             <img
               src="public/image/puncak_card_3.svg"
               alt="Program 3"
@@ -1390,8 +1481,7 @@
             />
           </div>
 
-          <!-- Card 4 -->
-          <div class="col-12 col-lg-3 mb-4">
+          <div class="col-12 col-lg-3 mb-4 puncak-list">
             <img
               src="public/image/puncak_card_4.svg"
               alt="Program 4"
@@ -1413,7 +1503,7 @@
             <img
               src="public/sponsor/prev_sponsor.png"
               alt="Previous Sponsor"
-              class="img-fluid w-100"
+              class="img-fluid w-100 prev-sponsor"
             />
           </div>
           <div class="col-md-5 mb-3">
@@ -1488,7 +1578,7 @@
               src="public/image/hero_info.svg"
               class="img-fluid img-bf-footer"
               alt="Dies Natalis 2025"
-              style="width: 50%"
+              style="width: 50%; transform: translateX(50%)"
             />
           </div>
           <div class="col-md-4 mb-3">
